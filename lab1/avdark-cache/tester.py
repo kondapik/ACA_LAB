@@ -1,4 +1,4 @@
-import os, re, pandas as pd
+import os, re, json
 
 def readOutput(tParams, consolidatedResults):
     oFile = open(outputFile)
@@ -37,6 +37,5 @@ for tParams in testingParameters:
     os.system('./' + shellFile + ' -s ' + str(tParams[0]) + ' -l ' + str(tParams[1]) + ' -a ' + str(tParams[2]) + ' -- ' + programPath + ' -n 100000')
     readOutput(tParams, consolidatedResults)
 
-framedData = pd.DataFrame(consolidatedResults)
-print(framedData)
 
+print(json.dumps(consolidatedResults, indent=4))
