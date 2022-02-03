@@ -1,0 +1,302 @@
+
+Integer Radix Sort
+     100000 Keys
+     1 Processors
+     Radix = 1024
+     Max key = 524288
+
+
+                 PROCESS STATISTICS
+               Total            Rank            Sort
+ Proc          Time             Time            Time
+    0              0               0               0
+
+                 TIMING INFORMATION
+Start time                        :       1643920866
+Initialization finish time        :       1643920866
+Overall finish time               :       1643920866
+Total time with initialization    :                0
+Total time without initialization :                0
+
+
+Integer Radix Sort
+     100000 Keys
+     1 Processors
+     Radix = 1024
+     Max key = 524288
+
+
+                 PROCESS STATISTICS
+               Total            Rank            Sort
+ Proc          Time             Time            Time
+    0              0               0               0
+
+                 TIMING INFORMATION
+Start time                        :       1643920867
+Initialization finish time        :       1643920867
+Overall finish time               :       1643920867
+Total time with initialization    :                0
+Total time without initialization :                0
+
+
+Integer Radix Sort
+     100000 Keys
+     1 Processors
+     Radix = 1024
+     Max key = 524288
+
+
+                 PROCESS STATISTICS
+               Total            Rank            Sort
+ Proc          Time             Time            Time
+    0              0               0               0
+
+                 TIMING INFORMATION
+Start time                        :       1643920868
+Initialization finish time        :       1643920869
+Overall finish time               :       1643920869
+Total time with initialization    :                1
+Total time without initialization :                0
+
+
+Integer Radix Sort
+     100000 Keys
+     1 Processors
+     Radix = 1024
+     Max key = 524288
+
+
+                 PROCESS STATISTICS
+               Total            Rank            Sort
+ Proc          Time             Time            Time
+    0              0               0               0
+
+                 TIMING INFORMATION
+Start time                        :       1643920870
+Initialization finish time        :       1643920870
+Overall finish time               :       1643920870
+Total time with initialization    :                0
+Total time without initialization :                0
+
+
+Integer Radix Sort
+     100000 Keys
+     1 Processors
+     Radix = 1024
+     Max key = 524288
+
+
+                 PROCESS STATISTICS
+               Total            Rank            Sort
+ Proc          Time             Time            Time
+    0              0               0               0
+
+                 TIMING INFORMATION
+Start time                        :       1643920871
+Initialization finish time        :       1643920871
+Overall finish time               :       1643920871
+Total time with initialization    :                0
+Total time without initialization :                0
+
+
+Integer Radix Sort
+     100000 Keys
+     1 Processors
+     Radix = 1024
+     Max key = 524288
+
+
+                 PROCESS STATISTICS
+               Total            Rank            Sort
+ Proc          Time             Time            Time
+    0              0               0               0
+
+                 TIMING INFORMATION
+Start time                        :       1643920872
+Initialization finish time        :       1643920872
+Overall finish time               :       1643920872
+Total time with initialization    :                0
+Total time without initialization :                0
+
+
+Integer Radix Sort
+     100000 Keys
+     1 Processors
+     Radix = 1024
+     Max key = 524288
+
+
+                 PROCESS STATISTICS
+               Total            Rank            Sort
+ Proc          Time             Time            Time
+    0              0               0               0
+
+                 TIMING INFORMATION
+Start time                        :       1643920873
+Initialization finish time        :       1643920873
+Overall finish time               :       1643920873
+Total time with initialization    :                0
+Total time without initialization :                0
+
+
+Integer Radix Sort
+     100000 Keys
+     1 Processors
+     Radix = 1024
+     Max key = 524288
+
+
+                 PROCESS STATISTICS
+               Total            Rank            Sort
+ Proc          Time             Time            Time
+    0              0               0               0
+
+                 TIMING INFORMATION
+Start time                        :       1643920874
+Initialization finish time        :       1643920874
+Overall finish time               :       1643920874
+Total time with initialization    :                0
+Total time without initialization :                0
+
+
+Integer Radix Sort
+     100000 Keys
+     1 Processors
+     Radix = 1024
+     Max key = 524288
+
+
+                 PROCESS STATISTICS
+               Total            Rank            Sort
+ Proc          Time             Time            Time
+    0              0               0               0
+
+                 TIMING INFORMATION
+Start time                        :       1643920875
+Initialization finish time        :       1643920876
+Overall finish time               :       1643920876
+Total time with initialization    :                1
+Total time without initialization :                0
+
+
+Integer Radix Sort
+     100000 Keys
+     1 Processors
+     Radix = 1024
+     Max key = 524288
+
+
+                 PROCESS STATISTICS
+               Total            Rank            Sort
+ Proc          Time             Time            Time
+    0              0               0               0
+
+                 TIMING INFORMATION
+Start time                        :       1643920877
+Initialization finish time        :       1643920877
+Overall finish time               :       1643920877
+Total time with initialization    :                0
+Total time without initialization :                0
+
+[
+    {
+        "associativity": 1,
+        "cacheSize": 16384,
+        "blockSize": 32,
+        "misses": "226707",
+        "writeMisses": "140100",
+        "writes": "725424",
+        "accesses": "1584271",
+        "missRatio": "14.3099%"
+    },
+    {
+        "associativity": 2,
+        "cacheSize": 16384,
+        "blockSize": 32,
+        "misses": "285508",
+        "writeMisses": "176618",
+        "writes": "725424",
+        "accesses": "1584271",
+        "missRatio": "18.0214%"
+    },
+    {
+        "associativity": 1,
+        "cacheSize": 32768,
+        "blockSize": 16,
+        "misses": "251718",
+        "writeMisses": "124897",
+        "writes": "725424",
+        "accesses": "1584271",
+        "missRatio": "15.8886%"
+    },
+    {
+        "associativity": 1,
+        "cacheSize": 32768,
+        "blockSize": 32,
+        "misses": "177569",
+        "writeMisses": "105332",
+        "writes": "725425",
+        "accesses": "1584273",
+        "missRatio": "11.2082%"
+    },
+    {
+        "associativity": 1,
+        "cacheSize": 32768,
+        "blockSize": 64,
+        "misses": "157049",
+        "writeMisses": "111607",
+        "writes": "725424",
+        "accesses": "1584271",
+        "missRatio": "9.91301%"
+    },
+    {
+        "associativity": 2,
+        "cacheSize": 32768,
+        "blockSize": 16,
+        "misses": "295855",
+        "writeMisses": "154303",
+        "writes": "725424",
+        "accesses": "1584271",
+        "missRatio": "18.6745%"
+    },
+    {
+        "associativity": 2,
+        "cacheSize": 32768,
+        "blockSize": 32,
+        "misses": "226076",
+        "writeMisses": "140074",
+        "writes": "725424",
+        "accesses": "1584271",
+        "missRatio": "14.27%"
+    },
+    {
+        "associativity": 2,
+        "cacheSize": 32768,
+        "blockSize": 64,
+        "misses": "209668",
+        "writeMisses": "149407",
+        "writes": "725424",
+        "accesses": "1584271",
+        "missRatio": "13.2344%"
+    },
+    {
+        "associativity": 1,
+        "cacheSize": 65536,
+        "blockSize": 32,
+        "misses": "140439",
+        "writeMisses": "77389",
+        "writes": "725424",
+        "accesses": "1584271",
+        "missRatio": "8.86458%"
+    },
+    {
+        "associativity": 2,
+        "cacheSize": 65536,
+        "blockSize": 32,
+        "misses": "176836",
+        "writeMisses": "105330",
+        "writes": "725424",
+        "accesses": "1584271",
+        "missRatio": "11.162%"
+    }
+]
