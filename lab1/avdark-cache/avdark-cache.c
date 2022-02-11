@@ -137,9 +137,12 @@ avdc_access(avdark_cache_t *self, avdc_pa_t pa, avdc_access_type_t type)
                         self->lines[index].tag = tag;
                 }else
                 {
-                        self->lines[index * self->assoc + (int) self->setLRU[index]].valid = 1;
-                        self->lines[index * self->assoc + (int) self->setLRU[index]].tag = tag;
-                        self->setLRU[index] = !self->setLRU[index]; //? updating least used set
+                        self->lines[index * self->assoc + self->setLRU[index]].valid = 1;
+                        self->lines[index * self->assoc + self->setLRU[index]].tag = tag;
+                        if (self->setLRU[index] == 0)  //? updating least used set
+                                self->setLRU[index] = 1;
+                        else
+                                self->setLRU[index] = 0;
                 }
         }
 

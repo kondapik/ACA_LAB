@@ -22,7 +22,7 @@ typedef unsigned avdc_block_size_t;
 typedef unsigned avdc_assoc_t;
 typedef avdc_pa_t avdc_tag_t;
 
-typedef bool avdc_set_LRU;
+typedef int avdc_set_LRU;
 
 /**
  * Memory access type to simulate.
