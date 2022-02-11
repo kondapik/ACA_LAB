@@ -1,0 +1,182 @@
+[
+    {
+        "missRatio": "21.3688%", 
+        "writeMisses": "1024", 
+        "associativity": 1, 
+        "cacheSize": 16384, 
+        "blockSize": 16, 
+        "writes": "4", 
+        "misses": "155098", 
+        "accesses": "725816"
+    }, 
+    {
+        "missRatio": "19.819%", 
+        "writeMisses": "512", 
+        "associativity": 2, 
+        "cacheSize": 16384, 
+        "blockSize": 16, 
+        "writes": "4", 
+        "misses": "143850", 
+        "accesses": "725819"
+    }, 
+    {
+        "missRatio": "19.3777%", 
+        "writeMisses": "512", 
+        "associativity": 1, 
+        "cacheSize": 16384, 
+        "blockSize": 32, 
+        "writes": "5", 
+        "misses": "140647", 
+        "accesses": "725820"
+    }, 
+    {
+        "missRatio": "18.0059%", 
+        "writeMisses": "256", 
+        "associativity": 2, 
+        "cacheSize": 16384, 
+        "blockSize": 32, 
+        "writes": "5", 
+        "misses": "130690", 
+        "accesses": "725817"
+    }, 
+    {
+        "missRatio": "20.5827%", 
+        "writeMisses": "256", 
+        "associativity": 1, 
+        "cacheSize": 16384, 
+        "blockSize": 64, 
+        "writes": "6", 
+        "misses": "149393", 
+        "accesses": "725818"
+    }, 
+    {
+        "missRatio": "19.6006%", 
+        "writeMisses": "128", 
+        "associativity": 2, 
+        "cacheSize": 16384, 
+        "blockSize": 64, 
+        "writes": "6", 
+        "misses": "142265", 
+        "accesses": "725818"
+    }, 
+    {
+        "missRatio": "17.444%", 
+        "writeMisses": "2048", 
+        "associativity": 1, 
+        "cacheSize": 32768, 
+        "blockSize": 16, 
+        "writes": "4", 
+        "misses": "126611", 
+        "accesses": "725816"
+    }, 
+    {
+        "missRatio": "14.6574%", 
+        "writeMisses": "1024", 
+        "associativity": 1, 
+        "cacheSize": 32768, 
+        "blockSize": 32, 
+        "writes": "5", 
+        "misses": "106386", 
+        "accesses": "725817"
+    }, 
+    {
+        "missRatio": "15.4247%", 
+        "writeMisses": "512", 
+        "associativity": 1, 
+        "cacheSize": 32768, 
+        "blockSize": 64, 
+        "writes": "6", 
+        "misses": "111955", 
+        "accesses": "725818"
+    }, 
+    {
+        "missRatio": "15.6415%", 
+        "writeMisses": "1024", 
+        "associativity": 2, 
+        "cacheSize": 32768, 
+        "blockSize": 16, 
+        "writes": "4", 
+        "misses": "113529", 
+        "accesses": "725819"
+    }, 
+    {
+        "missRatio": "12.9219%", 
+        "writeMisses": "512", 
+        "associativity": 2, 
+        "cacheSize": 32768, 
+        "blockSize": 32, 
+        "writes": "5", 
+        "misses": "93789", 
+        "accesses": "725817"
+    }, 
+    {
+        "missRatio": "14.0213%", 
+        "writeMisses": "256", 
+        "associativity": 2, 
+        "cacheSize": 32768, 
+        "blockSize": 64, 
+        "writes": "6", 
+        "misses": "101769", 
+        "accesses": "725818"
+    }, 
+    {
+        "missRatio": "14.9873%", 
+        "writeMisses": "4096", 
+        "associativity": 1, 
+        "cacheSize": 65536, 
+        "blockSize": 16, 
+        "writes": "4", 
+        "misses": "108781", 
+        "accesses": "725819"
+    }, 
+    {
+        "missRatio": "13.1168%", 
+        "writeMisses": "2048", 
+        "associativity": 2, 
+        "cacheSize": 65536, 
+        "blockSize": 16, 
+        "writes": "4", 
+        "misses": "95204", 
+        "accesses": "725816"
+    }, 
+    {
+        "missRatio": "10.9548%", 
+        "writeMisses": "2048", 
+        "associativity": 1, 
+        "cacheSize": 65536, 
+        "blockSize": 32, 
+        "writes": "5", 
+        "misses": "79512", 
+        "accesses": "725817"
+    }, 
+    {
+        "missRatio": "8.99438%", 
+        "writeMisses": "1024", 
+        "associativity": 2, 
+        "cacheSize": 65536, 
+        "blockSize": 32, 
+        "writes": "5", 
+        "misses": "65283", 
+        "accesses": "725820"
+    }, 
+    {
+        "missRatio": "10.7814%", 
+        "writeMisses": "1024", 
+        "associativity": 1, 
+        "cacheSize": 65536, 
+        "blockSize": 64, 
+        "writes": "6", 
+        "misses": "78254", 
+        "accesses": "725821"
+    }, 
+    {
+        "missRatio": "8.8226%", 
+        "writeMisses": "512", 
+        "associativity": 2, 
+        "cacheSize": 65536, 
+        "blockSize": 64, 
+        "writes": "6", 
+        "misses": "64036", 
+        "accesses": "725818"
+    }
+]
