@@ -284,6 +284,8 @@ avdc_new(avdc_size_t size, avdc_block_size_t block_size,
                 return NULL;
         }
 
+        avdc_reset_statistics(self);
+
         return self;
 }
 
