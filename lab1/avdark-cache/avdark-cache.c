@@ -121,12 +121,26 @@ avdc_access(avdark_cache_t *self, avdc_pa_t pa, avdc_access_type_t type)
         /* TODO: Update this function */
         avdc_tag_t tag = tag_from_pa(self, pa);
         int index = index_from_pa(self, pa);
-        int hit;
+        int hit[self->assoc];
+        int finalHit = 0;
 
-        hit = self->lines[index].valid && self->lines[index].tag == tag;
-        if (!hit) {
-                self->lines[index].valid = 1;
-                self->lines[index].tag = tag;
+        //hit = self->lines[index].valid && self->lines[index].tag == tag;
+        for (int i = 0; i < self->assoc; i++){
+                hit[i] = self->lines[index * self->assoc + i].valid && self->lines[index * self->assoc + i].tag == tag;
+                if (hit[i]) finalHit = 1; //? an OR of all elements of hit array
+        }
+        
+        if (!finalHit) { //? adding cache entry when it is not a hit
+                if (self->assoc == 1)
+                {
+                        self->lines[index].valid = 1;
+                        self->lines[index].tag = tag;
+                }else
+                {
+                        self->lines[index * self->assoc + (int) self->setLRU[index]].valid = 1;
+                        self->lines[index * self->assoc + (int) self->setLRU[index]].tag = tag;
+                        self->setLRU[index] = !self->setLRU[index]; //? updating least used set
+                }
         }
 
         switch (type) {
@@ -134,7 +148,7 @@ avdc_access(avdark_cache_t *self, avdc_pa_t pa, avdc_access_type_t type)
                 avdc_dbg_log(self, "read: pa: 0x%.16lx, tag: 0x%.16lx, index: %d, hit: %d\n",
                              (unsigned long)pa, (unsigned long)tag, index, hit);
                 self->stat_data_read += 1;
-                if (!hit)
+                if (!finalHit)
                         self->stat_data_read_miss += 1;
                 break;
 
@@ -142,7 +156,7 @@ avdc_access(avdark_cache_t *self, avdc_pa_t pa, avdc_access_type_t type)
                 avdc_dbg_log(self, "write: pa: 0x%.16lx, tag: 0x%.16lx, index: %d, hit: %d\n",
                              (unsigned long)pa, (unsigned long)tag, index, hit);
                 self->stat_data_write += 1;
-                if (!hit)
+                if (!finalHit)
                         self->stat_data_write_miss += 1;
                 break;
         }
@@ -153,8 +167,17 @@ avdc_flush_cache(avdark_cache_t *self)
 {
         /* TODO: Update this function */
         for (int i = 0; i < self->number_of_sets; i++) {
-                self->lines[i].valid = 0;
-                self->lines[i].tag = 0;
+                if (self->assoc == 1)
+                {
+                        self->lines[i].valid = 0;
+                        self->lines[i].tag = 0;
+                }else //? Clearing sets if associativity is not 1
+                {
+                        for (int j = 0; j < self->assoc; j++){
+                                self->lines[i * self->assoc + j].valid = 0;
+                                self->lines[i * self->assoc + j].tag = 0;
+                        }
+                }
         }
 }
 
@@ -192,11 +215,17 @@ avdc_resize(avdark_cache_t *self,
         if (self->lines)
                 AVDC_FREE(self->lines);
         /* HINT: If you change this, you may have to update
-         * avdc_delete() to reflect changes to how thie self->lines
+         * avdc_delete() to reflect changes to how the self->lines
          * array is allocated. */
-        self->lines = AVDC_MALLOC(self->number_of_sets, avdc_cache_line_t);
+        self->lines = AVDC_MALLOC(self->number_of_sets * self->assoc, avdc_cache_line_t); //? Creating a "2d" array with 1D index
 
+        /* (Re-)Allocate space for the tags array */
+        if (self->setLRU)
+                AVDC_FREE(self->setLRU);
+        
+        self->setLRU = AVDC_MALLOC(self->number_of_sets, avdc_set_LRU); //? Boolean array to remember least used set
         /* Flush the cache, this initializes the tag array to a known state */
+
         avdc_flush_cache(self);
 
         return 1;
@@ -220,9 +249,14 @@ avdc_print_internals(avdark_cache_t *self)
                 self->size, self->assoc, self->block_size);
 
         for (i = 0; i < self->number_of_sets; i++)
-                fprintf(stderr, "tag: <0x%.16lx> valid: %d\n",
-                        (long unsigned int)self->lines[i].tag,
-                        self->lines[i].valid);
+        {       
+                for (int j = 0; j < self->assoc; j++){
+                        fprintf(stderr, "set: %d tag: <0x%.16lx> valid: %d\n",
+                        j, (long unsigned int)self->lines[i * self->assoc + j].tag,
+                        self->lines[i * self->assoc + j].valid);
+                }
+                
+        }
 }
 
 void
@@ -258,6 +292,9 @@ avdc_delete(avdark_cache_t *self)
 {
         if (self->lines)
                 AVDC_FREE(self->lines);
+
+         if (self->setLRU)
+                AVDC_FREE(self->setLRU);
 
         AVDC_FREE(self);
 }

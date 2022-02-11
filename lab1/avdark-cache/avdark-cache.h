@@ -12,6 +12,7 @@
 #define AVDARK_CACHE_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 /** Physical address representation within the cache model */
 typedef uint64_t avdc_pa_t;
@@ -20,6 +21,8 @@ typedef unsigned avdc_size_t;
 typedef unsigned avdc_block_size_t;
 typedef unsigned avdc_assoc_t;
 typedef avdc_pa_t avdc_tag_t;
+
+typedef bool avdc_set_LRU;
 
 /**
  * Memory access type to simulate.
@@ -59,6 +62,8 @@ typedef struct {
          * is stored
          */
         avdc_cache_line_t *lines;
+
+        avdc_set_LRU *setLRU; //? A boolean array to remember the least used set in the line
 
         /**
          * Cache parameters. Use avdc_resize() update them.
