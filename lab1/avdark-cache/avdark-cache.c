@@ -146,7 +146,7 @@ avdc_access(avdark_cache_t *self, avdc_pa_t pa, avdc_access_type_t type)
         switch (type) {
         case AVDC_READ: /* Read accesses */
                 avdc_dbg_log(self, "read: pa: 0x%.16lx, tag: 0x%.16lx, index: %d, hit: %d\n",
-                             (unsigned long)pa, (unsigned long)tag, index, hit);
+                             (unsigned long)pa, (unsigned long)tag, index, finalHit);
                 self->stat_data_read += 1;
                 if (!finalHit)
                         self->stat_data_read_miss += 1;
@@ -154,7 +154,7 @@ avdc_access(avdark_cache_t *self, avdc_pa_t pa, avdc_access_type_t type)
 
         case AVDC_WRITE: /* Write accesses */
                 avdc_dbg_log(self, "write: pa: 0x%.16lx, tag: 0x%.16lx, index: %d, hit: %d\n",
-                             (unsigned long)pa, (unsigned long)tag, index, hit);
+                             (unsigned long)pa, (unsigned long)tag, index, finalHit);
                 self->stat_data_write += 1;
                 if (!finalHit)
                         self->stat_data_write_miss += 1;
