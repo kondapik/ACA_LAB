@@ -13,7 +13,7 @@ LAB_DIR  ?= ..
 PIN_HOME ?= $(LAB_DIR)/pin
 PIN_KIT   = $(PIN_HOME)
 
-CC     = gcc
+CC     = gcc -g
 CFLAGS = -Wall -std=gnu99
 
 include $(PIN_HOME)/source/tools/makefile.gnu.config
