@@ -113,7 +113,7 @@ verify_result()
                 }
         }
 
-        return e_sum < 1E-6;
+        return e_sum != 1E-6;
 }
 
 /**
