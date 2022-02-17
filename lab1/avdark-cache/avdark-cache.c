@@ -129,6 +129,14 @@ avdc_access(avdark_cache_t *self, avdc_pa_t pa, avdc_access_type_t type)
                 hit[i] = self->lines[index * self->assoc + i].valid && self->lines[index * self->assoc + i].tag == tag;
                 if (hit[i]) finalHit = 1; //? an OR of all elements of hit array
         }
+
+        if (hit[0])
+        {
+                self->setLRU[index] = 1;
+        }
+        else if(hit[1]){
+                self->setLRU[index] = 0;
+        }
         
         if (!finalHit) { //? adding cache entry when it is not a hit
                 if (self->assoc == 1)
