@@ -6,7 +6,7 @@ import os, re, json
 def readOutput(tParams, consolidatedResults):
     oFile = open(outputFile)
     if oFile:
-        regex = r"Writes:\s(?P<writes>\d*)\s*Write Misses:\s(?P<wMisses>\d*)\s*Reads:\s(?P<reads>\d*)\s*Read Misses:\s(?P<rMisses>\d*)\s*Misses:\s(?P<misses>\d*)\s*Accesses:\s(?P<accesses>\d*)\s*Miss Ratio:\s(?P<mRatio>\d*)%"
+        regex = r"Writes:\s(?P<writes>\d*)\s*Write Misses:\s(?P<wMisses>\d*)\s*Reads:\s(?P<reads>\d*)\s*Read Misses:\s(?P<rMisses>\d*)\s*Misses:\s(?P<misses>\d*)\s*Accesses:\s(?P<accesses>\d*)\s*Miss Ratio:\s(?P<mRatio>[\d.]*)%"
         matches = re.search(regex, oFile.read())
         if matches:
             consolidatedResults.append({'cacheSize':tParams[0],'blockSize':tParams[1], 'associativity':tParams[2], 'writes':matches.group('writes'), 'writeMisses':matches.group('wMisses'),
