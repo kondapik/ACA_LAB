@@ -17,7 +17,7 @@
 #include <math.h>
 
 /* Size of the matrices to multiply */
-#define SIZE 1000
+#define SIZE 2000
 
 #define L1_CACHE_SIZE 16384
 
@@ -51,7 +51,7 @@ matmul_opt()
         int l1BlockSize = (int) floor(sqrt((double) L1_CACHE_SIZE / 4));
         double tmpValue;
 
-        printf("L1 Block size: %d\n", l1BlockSize);
+        //printf("L1 Block size: %d\n", l1BlockSize);
         // for (i = 0; i < SIZE; i++) {
         //         for (k = 0; k < SIZE; k++) {
         //                 for (j = 0; j < SIZE; j++) {
