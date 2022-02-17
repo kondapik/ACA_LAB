@@ -21,6 +21,7 @@
 
 #define L1_CACHE_SIZE 16384
 
+#define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 /* HINT: The Makefile allows you to specify L1 and L2 block sizes as
  * compile time options.These may be specified when calling make,
  * e.g. "make L1_BLOCK_SIZE=256 L2_BLOCK_SIZE=1024". If the block
@@ -64,13 +65,13 @@ matmul_opt()
                         for (jb = 0; jb < SIZE; jb+=l1BlockSize) {
                                 for (i = ib; i < ib + l1BlockSize; ++i) {
                                         for (k = kb; k < kb + l1BlockSize; ++k) {
-                                                i = min(i, SIZE - 1);
-                                                k = min(k, SIZE - 1);
+                                                i = MIN(i, SIZE - 1);
+                                                k = MIN(k, SIZE - 1);
                                                 tmpValue = mat_a[i][k];
 
                                                 for (j = jb; j < jb + l1BlockSize; ++j) {
                                                         //printf("i: %d\t j: %d\tk: %d\n", i,j,k);
-                                                        j = min(j, SIZE - 1);
+                                                        j = MIN(j, SIZE - 1);
                                                         mat_ref[i][j] += tmpValue * mat_b[k][j];
                                                 }
                                         }
