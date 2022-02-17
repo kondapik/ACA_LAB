@@ -14,9 +14,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 
 /* Size of the matrices to multiply */
 #define SIZE 1000
+
+#define L1_CACHE_SIZE 16384
 
 /* HINT: The Makefile allows you to specify L1 and L2 block sizes as
  * compile time options.These may be specified when calling make,
@@ -43,12 +46,27 @@ matmul_opt()
          * here. It should calculate mat_c := mat_a * mat_b. See
          * matmul_ref() for a reference solution.
          */
-        int k, i, j;
+        int k, i, j, kb, ib, jb;
+        int l1BlockSize = (int) floor(sqrt((double) L1_CACHE_SIZE / 3));
 
-        for (i = 0; i < SIZE; i++) {
-                for (k = 0; k < SIZE; k++) {
-                        for (j = 0; j < SIZE; j++) {
-                                mat_ref[i][j] += mat_a[i][k] * mat_b[k][j];
+        // for (i = 0; i < SIZE; i++) {
+        //         for (k = 0; k < SIZE; k++) {
+        //                 for (j = 0; j < SIZE; j++) {
+        //                         mat_ref[i][j] += mat_a[i][k] * mat_b[k][j];
+        //                 }
+        //         }
+        // }
+
+        for (ib = 0; ib < SIZE; ib+=l1BlockSize) {
+                for (kb = 0; kb < SIZE; kb+=l1BlockSize) {
+                        for (jb = 0; jb < SIZE; jb+=l1BlockSize) {
+                                for (i = ib; i < ib + l1BlockSize; i++) {
+                                        for (k = kb; k < kb + l1BlockSize; k++) {
+                                                for (j = jb; j < jb + l1BlockSize; j++) {
+                                                        mat_ref[i][j] += mat_a[i][k] * mat_b[k][j];
+                                                }
+                                        }
+                                }
                         }
                 }
         }
