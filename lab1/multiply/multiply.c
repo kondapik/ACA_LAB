@@ -47,7 +47,7 @@ matmul_opt()
          * matmul_ref() for a reference solution.
          */
         int k, i, j, kb, ib, jb;
-        int l1BlockSize = (int) floor(sqrt((double) L1_CACHE_SIZE / 3));
+        int l1BlockSize = (int) floor(sqrt((double) L1_CACHE_SIZE / 4));
 
          printf("L1 Block size: %d\n", l1BlockSize);
         // for (i = 0; i < SIZE; i++) {
