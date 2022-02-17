@@ -48,8 +48,9 @@ matmul_opt()
          */
         int k, i, j, kb, ib, jb;
         int l1BlockSize = (int) floor(sqrt((double) L1_CACHE_SIZE / 4));
+        double tmpValue;
 
-         printf("L1 Block size: %d\n", l1BlockSize);
+        printf("L1 Block size: %d\n", l1BlockSize);
         // for (i = 0; i < SIZE; i++) {
         //         for (k = 0; k < SIZE; k++) {
         //                 for (j = 0; j < SIZE; j++) {
@@ -63,12 +64,14 @@ matmul_opt()
                         for (jb = 0; jb < SIZE; jb+=l1BlockSize) {
                                 for (i = ib; i < ib + l1BlockSize; ++i) {
                                         for (k = kb; k < kb + l1BlockSize; ++k) {
+                                                i = min(i, SIZE - 1);
+                                                k = min(k, SIZE - 1);
+                                                tmpValue = mat_a[i][k];
+
                                                 for (j = jb; j < jb + l1BlockSize; ++j) {
                                                         //printf("i: %d\t j: %d\tk: %d\n", i,j,k);
-                                                        if (i >= SIZE) i = SIZE - 1;
-                                                        if (j >= SIZE) j = SIZE - 1;
-                                                        if (k >= SIZE) k = SIZE - 1;
-                                                        mat_ref[i][j] += mat_a[i][k] * mat_b[k][j];
+                                                        j = min(j, SIZE - 1);
+                                                        mat_ref[i][j] += tmpValue * mat_b[k][j];
                                                 }
                                         }
                                 }
