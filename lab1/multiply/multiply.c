@@ -52,29 +52,29 @@ matmul_opt()
         double tmpValue;
 
         //printf("L1 Block size: %d\n", l1BlockSize);
-        // for (i = 0; i < SIZE; i++) {
-        //         for (k = 0; k < SIZE; k++) {
-        //                 for (j = 0; j < SIZE; j++) {
-        //                         mat_ref[i][j] += mat_a[i][k] * mat_b[k][j];
-        //                 }
-        //         }
-        // }
-
-        for (ib = 0; ib < SIZE; ib+=l1BlockSize) {
-                for (kb = 0; kb < SIZE; kb+=l1BlockSize) {
-                        for (jb = 0; jb < SIZE; jb+=l1BlockSize) {
-                                for (i = ib; i < MIN(ib + l1BlockSize, SIZE); ++i) {
-                                        for (k = kb; k < MIN(kb + l1BlockSize, SIZE); ++k) {
-                                                tmpValue = mat_a[i][k];
-                                                for (j = jb; j < MIN(jb + l1BlockSize, SIZE); ++j) {
-                                                        //printf("i: %d\t j: %d\tk: %d\n", i,j,k);
-                                                        mat_ref[i][j] += tmpValue * mat_b[k][j];
-                                                }
-                                        }
-                                }
+        for (i = 0; i < SIZE; i++) {
+                for (k = 0; k < SIZE; k++) {
+                        for (j = 0; j < SIZE; j++) {
+                                mat_ref[i][j] += mat_a[i][k] * mat_b[k][j];
                         }
                 }
         }
+
+        // for (ib = 0; ib < SIZE; ib+=l1BlockSize) {
+        //         for (kb = 0; kb < SIZE; kb+=l1BlockSize) {
+        //                 for (jb = 0; jb < SIZE; jb+=l1BlockSize) {
+        //                         for (i = ib; i < MIN(ib + l1BlockSize, SIZE); ++i) {
+        //                                 for (k = kb; k < MIN(kb + l1BlockSize, SIZE); ++k) {
+        //                                         tmpValue = mat_a[i][k];
+        //                                         for (j = jb; j < MIN(jb + l1BlockSize, SIZE); ++j) {
+        //                                                 //printf("i: %d\t j: %d\tk: %d\n", i,j,k);
+        //                                                 mat_ref[i][j] += tmpValue * mat_b[k][j];
+        //                                         }
+        //                                 }
+        //                         }
+        //                 }
+        //         }
+        // }
 }
 
 /**
