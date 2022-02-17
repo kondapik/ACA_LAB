@@ -1,182 +1,182 @@
 [
     {
-        "missRatio": "21.3688%", 
+        "missRatio": "21.4007", 
         "writeMisses": "1024", 
         "associativity": 1, 
         "cacheSize": 16384, 
         "blockSize": 16, 
         "writes": "4", 
-        "misses": "155098", 
+        "misses": "155330", 
         "accesses": "725816"
     }, 
     {
-        "missRatio": "19.819%", 
+        "missRatio": "19.8321", 
         "writeMisses": "512", 
         "associativity": 2, 
         "cacheSize": 16384, 
         "blockSize": 16, 
         "writes": "4", 
-        "misses": "143850", 
+        "misses": "143945", 
         "accesses": "725819"
     }, 
     {
-        "missRatio": "19.3777%", 
+        "missRatio": "19.4129", 
         "writeMisses": "512", 
         "associativity": 1, 
         "cacheSize": 16384, 
         "blockSize": 32, 
         "writes": "5", 
-        "misses": "140647", 
-        "accesses": "725820"
+        "misses": "140902", 
+        "accesses": "725817"
     }, 
     {
-        "missRatio": "18.0059%", 
+        "missRatio": "18.0284", 
         "writeMisses": "256", 
         "associativity": 2, 
         "cacheSize": 16384, 
         "blockSize": 32, 
         "writes": "5", 
-        "misses": "130690", 
+        "misses": "130853", 
         "accesses": "725817"
     }, 
     {
-        "missRatio": "20.5827%", 
+        "missRatio": "20.6076", 
         "writeMisses": "256", 
         "associativity": 1, 
         "cacheSize": 16384, 
         "blockSize": 64, 
         "writes": "6", 
-        "misses": "149393", 
+        "misses": "149574", 
         "accesses": "725818"
     }, 
     {
-        "missRatio": "19.6006%", 
+        "missRatio": "19.622", 
         "writeMisses": "128", 
         "associativity": 2, 
         "cacheSize": 16384, 
         "blockSize": 64, 
         "writes": "6", 
-        "misses": "142265", 
+        "misses": "142420", 
         "accesses": "725818"
     }, 
     {
-        "missRatio": "17.444%", 
+        "missRatio": "17.4367", 
         "writeMisses": "2048", 
         "associativity": 1, 
         "cacheSize": 32768, 
         "blockSize": 16, 
         "writes": "4", 
-        "misses": "126611", 
+        "misses": "126558", 
         "accesses": "725816"
     }, 
     {
-        "missRatio": "14.6574%", 
+        "missRatio": "14.5483", 
         "writeMisses": "1024", 
         "associativity": 1, 
         "cacheSize": 32768, 
         "blockSize": 32, 
         "writes": "5", 
-        "misses": "106386", 
+        "misses": "105594", 
         "accesses": "725817"
     }, 
     {
-        "missRatio": "15.4247%", 
+        "missRatio": "15.4488", 
         "writeMisses": "512", 
         "associativity": 1, 
         "cacheSize": 32768, 
         "blockSize": 64, 
         "writes": "6", 
-        "misses": "111955", 
+        "misses": "112130", 
         "accesses": "725818"
     }, 
     {
-        "missRatio": "15.6415%", 
+        "missRatio": "15.6473", 
         "writeMisses": "1024", 
         "associativity": 2, 
         "cacheSize": 32768, 
         "blockSize": 16, 
         "writes": "4", 
-        "misses": "113529", 
+        "misses": "113571", 
         "accesses": "725819"
     }, 
     {
-        "missRatio": "12.9219%", 
+        "missRatio": "12.9246", 
         "writeMisses": "512", 
         "associativity": 2, 
         "cacheSize": 32768, 
         "blockSize": 32, 
         "writes": "5", 
-        "misses": "93789", 
+        "misses": "93809", 
         "accesses": "725817"
     }, 
     {
-        "missRatio": "14.0213%", 
+        "missRatio": "14.0329", 
         "writeMisses": "256", 
         "associativity": 2, 
         "cacheSize": 32768, 
         "blockSize": 64, 
         "writes": "6", 
-        "misses": "101769", 
-        "accesses": "725818"
+        "misses": "101854", 
+        "accesses": "725821"
     }, 
     {
-        "missRatio": "14.9873%", 
+        "missRatio": "15.0472", 
         "writeMisses": "4096", 
         "associativity": 1, 
         "cacheSize": 65536, 
         "blockSize": 16, 
         "writes": "4", 
-        "misses": "108781", 
-        "accesses": "725819"
+        "misses": "109215", 
+        "accesses": "725816"
     }, 
     {
-        "missRatio": "13.1168%", 
+        "missRatio": "13.0868", 
         "writeMisses": "2048", 
         "associativity": 2, 
         "cacheSize": 65536, 
         "blockSize": 16, 
         "writes": "4", 
-        "misses": "95204", 
+        "misses": "94986", 
         "accesses": "725816"
     }, 
     {
-        "missRatio": "10.9548%", 
+        "missRatio": "10.9581", 
         "writeMisses": "2048", 
         "associativity": 1, 
         "cacheSize": 65536, 
         "blockSize": 32, 
         "writes": "5", 
-        "misses": "79512", 
-        "accesses": "725817"
+        "misses": "79536", 
+        "accesses": "725820"
     }, 
     {
-        "missRatio": "8.99438%", 
+        "missRatio": "9.00599", 
         "writeMisses": "1024", 
         "associativity": 2, 
         "cacheSize": 65536, 
         "blockSize": 32, 
         "writes": "5", 
-        "misses": "65283", 
-        "accesses": "725820"
+        "misses": "65367", 
+        "accesses": "725817"
     }, 
     {
-        "missRatio": "10.7814%", 
+        "missRatio": "10.7334", 
         "writeMisses": "1024", 
         "associativity": 1, 
         "cacheSize": 65536, 
         "blockSize": 64, 
         "writes": "6", 
-        "misses": "78254", 
-        "accesses": "725821"
+        "misses": "77905", 
+        "accesses": "725818"
     }, 
     {
-        "missRatio": "8.8226%", 
+        "missRatio": "8.82191", 
         "writeMisses": "512", 
         "associativity": 2, 
         "cacheSize": 65536, 
         "blockSize": 64, 
         "writes": "6", 
-        "misses": "64036", 
+        "misses": "64031", 
         "accesses": "725818"
     }
 ]
