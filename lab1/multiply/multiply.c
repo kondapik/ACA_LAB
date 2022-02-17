@@ -64,7 +64,10 @@ matmul_opt()
                                 for (i = ib; i < ib + l1BlockSize; ++i) {
                                         for (k = kb; k < kb + l1BlockSize; ++k) {
                                                 for (j = jb; j < jb + l1BlockSize; ++j) {
-                                                        printf("i: %d\t j: %d\tk: %d\n", i,j,k);
+                                                        //printf("i: %d\t j: %d\tk: %d\n", i,j,k);
+                                                        if (i >= SIZE) i = SIZE - 1;
+                                                        if (j >= SIZE) j = SIZE - 1;
+                                                        if (k >= SIZE) k = SIZE - 1;
                                                         mat_ref[i][j] += mat_a[i][k] * mat_b[k][j];
                                                 }
                                         }
