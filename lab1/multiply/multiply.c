@@ -63,15 +63,11 @@ matmul_opt()
         for (ib = 0; ib < SIZE; ib+=l1BlockSize) {
                 for (kb = 0; kb < SIZE; kb+=l1BlockSize) {
                         for (jb = 0; jb < SIZE; jb+=l1BlockSize) {
-                                for (i = ib; i < ib + l1BlockSize; ++i) {
-                                        for (k = kb; k < kb + l1BlockSize; ++k) {
-                                                i = MIN(i, SIZE - 1);
-                                                k = MIN(k, SIZE - 1);
+                                for (i = ib; i < MIN(ib + l1BlockSize, SIZE); ++i) {
+                                        for (k = kb; k < MIN(kb + l1BlockSize, SIZE); ++k) {
                                                 tmpValue = mat_a[i][k];
-
-                                                for (j = jb; j < jb + l1BlockSize; ++j) {
+                                                for (j = jb; j < MIN(jb + l1BlockSize, SIZE); ++j) {
                                                         //printf("i: %d\t j: %d\tk: %d\n", i,j,k);
-                                                        j = MIN(j, SIZE - 1);
                                                         mat_ref[i][j] += tmpValue * mat_b[k][j];
                                                 }
                                         }
