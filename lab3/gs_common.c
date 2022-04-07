@@ -4,7 +4,7 @@
  * Course: Advanced Computer Architecture, Uppsala University
  * Course Part: Lab assignment 3
  *
- * Original author: Frédéric Haziza <daz@it.uu.se>
+ * Original author: Frï¿½dï¿½ric Haziza <daz@it.uu.se>
  * Heavily modified by: Andreas Sandberg <andreas.sandberg@it.uu.se>
  *
  */
@@ -38,7 +38,7 @@
 #define DEFAULT_SIZE               2048
 #define DEFAULT_ITERATIONS           20
 #define DEFAULT_TOLERANCE             1.0
-#define DEFAULT_NTHREADS              4
+#define DEFAULT_NTHREADS              8
 #define DEFAULT_PAD                   0
 
 /* Parameter values */
