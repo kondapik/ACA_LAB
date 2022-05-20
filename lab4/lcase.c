@@ -145,10 +145,20 @@ lcase_ref_cond(char *restrict dst, const char *restrict src, size_t len)
 static void
 lcase_sse_simple(char *restrict dst, const char *restrict src, size_t len)
 {
+
+
+  /* Assume that length is an even multiple of the
+     * vector size */
+  
         /* We assume that the data size is an even multiple of 16
          * bytes (one 128 bit vector register). */
-        assert(!(len & 0xF));
-
+         assert(!(len & 0xF));
+        const __m128i s = _mm_set1_epi8(0x20);
+        
+        for (size_t i = 0; i <= len; i += 16) {
+           __m128i v = _mm_loadu_si128((__m128i *)(src + i));
+           _mm_storeu_si128((__m128i *)(dst + i), _mm_or_si128( v, s));
+        }
         /* TASK: Implement the simple algorithm for converting text to
          * lower case without checking that the characters are within
          * the allowed range. Use SSE instructions and the
@@ -173,8 +183,19 @@ lcase_sse_cond(char *restrict dst, const char *restrict src, size_t len)
 {
         /* We assume that the data size is an even multiple of 16
          * bytes (one 128 bit vector register). */
-        assert(!(len & 0xF));
-
+          assert(!(len & 0xF)); 
+          
+           const __m128i s = _mm_set1_epi8(0x20);  
+       const __m128i lower_limit = _mm_set1_epi8(0x40); 
+       const __m128i upper_limit = _mm_set1_epi8(0x5B);   
+      
+      for (size_t i=0; i<=len; i+=16) {
+          __m128i c = _mm_loadu_si128((__m128i *)(src + i));
+          __m128i result = _mm_and_si128( _mm_cmpgt_epi8(c, lower_limit), _mm_cmpgt_epi8(upper_limit, c));  
+           _mm_storeu_si128((__m128i *)(dst + i), _mm_or_si128( c , _mm_and_si128(result,s)));  
+  
+       } 
+       
         /* TASK: Implement the "full" algorithm for converting text to
          * lower case using SSE instructions and the
          * LOAD_SI128/STORE_SI128 macros.

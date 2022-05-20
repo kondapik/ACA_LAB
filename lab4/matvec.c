@@ -42,7 +42,24 @@ matvec_sse()
         /* Assume that the data size is an even multiple of the 128 bit
          * SSE vectors (i.e. 4 floats) */
         assert(!(SIZE & 0x3));
-
+        
+        __m128 vector_a, vector_b, multiply;
+        
+         for (int i = 0; i < SIZE; i++)
+         {
+		for (int j = 0; j < SIZE; j += 4)
+		{
+		    vector_a = _mm_load_ps(&mat_a[MINDEX(i, j)]);
+		    vector_b = _mm_load_ps(&vec_b[j]);
+		    
+		    multiply = vector_a*vector_b;
+		    multiply = _mm_hadd_ps(multiply, multiply);
+		    multiply = _mm_hadd_ps(multiply, multiply);
+		    
+		    vec_c[i] += _mm_cvtss_f32(multiply);
+		    
+		}
+        }
         /* TASK: Implement your SSE version of the matrix-vector
          * multiplication here. (Multiply mat_a and vec_b into vec_c.)
          */
