@@ -82,6 +82,36 @@ matmul_sse_block(int i, int j, int k)
          * parameter can be used to restrict to which elements the
          * result is stored, all other elements are set to zero.
          */
+        __m128 a1, a2, a3, a4;
+        a1 = _mm_load_ps(&mat_a[i][k]);
+        a2 = _mm_load_ps(&mat_a[i+1][k]);
+        a3 = _mm_load_ps(&mat_a[i+2][k]);
+        a4 = _mm_load_ps(&mat_a[i+3][k]);
+
+        __m128 b1, b2, b3, b4;
+        b1 = _mm_load_ps(&mat_b[k][j]);
+        b2 = _mm_load_ps(&mat_b[k+1][j]);
+        b3 = _mm_load_ps(&mat_b[k+2][j]);
+        b4 = _mm_load_ps(&mat_b[k+3][j]);
+        _MM_TRANSPOSE4_PS(b1, b2, b3, b4);
+
+        __m128 c1, c2, c3, c4;
+        c1 = _mm_load_ps(&mat_c[i][j]);
+        c2 = _mm_load_ps(&mat_c[i+1][j]);
+        c3 = _mm_load_ps(&mat_c[i+2][j]);
+        c4 = _mm_load_ps(&mat_c[i+3][j]);
+
+        c1 = _mm_add_ps(c1, _mm_add_ps(_mm_add_ps(_mm_dp_ps(a1, b1, 0xF1), _mm_dp_ps(a1, b2, 0xF2)), _mm_add_ps( _mm_dp_ps(a1, b3, 0xF4), _mm_dp_ps(a1, b4, 0xF8))));
+        _mm_store_ps(&mat_c[i][j], c1);
+
+        c2 = _mm_add_ps(c2, _mm_add_ps(_mm_add_ps(_mm_dp_ps(a2, b1, 0xF1), _mm_dp_ps(a2, b2, 0xF2)), _mm_add_ps( _mm_dp_ps(a2, b3, 0xF4), _mm_dp_ps(a2, b4, 0xF8))));
+        _mm_store_ps(&mat_c[i+1][j], c2);
+
+        c3 = _mm_add_ps(c3, _mm_add_ps(_mm_add_ps(_mm_dp_ps(a3, b1, 0xF1), _mm_dp_ps(a3, b2, 0xF2)), _mm_add_ps( _mm_dp_ps(a3, b3, 0xF4), _mm_dp_ps(a3, b4, 0xF8))));
+        _mm_store_ps(&mat_c[i+2][j], c3);
+
+        c4 = _mm_add_ps(c4, _mm_add_ps(_mm_add_ps(_mm_dp_ps(a4, b1, 0xF1), _mm_dp_ps(a4, b2, 0xF2)), _mm_add_ps( _mm_dp_ps(a4, b3, 0xF4), _mm_dp_ps(a4, b4, 0xF8))));
+        _mm_store_ps(&mat_c[i+3][j], c4);
 }
 
 /**
@@ -289,6 +319,24 @@ matmul_sse()
         /* TASK: Implement your simple matrix multiplication using SSE
          * here. (Multiply mat_a and mat_b into mat_c.)
          */
+
+         __m128 aVec, bVec, output;
+
+        for (i = 0; i < SIZE; i++){
+                for (k = 0; k < SIZE; k+=4){
+                        for (j = 0; j < SIZE; j++)
+                        {
+                                aVec = _mm_load_ps(&mat_a[i][k]);
+                                bVec = _mm_set_ps(mat_b[k + 3][j], mat_b[k + 2][j], mat_b[k + 1][j], mat_b[k][j]);
+
+                                output = _mm_mul_ps(aVec,bVec);
+                                output = _mm_hadd_ps(output, output);
+                                output = _mm_hadd_ps(output, output);
+
+                                mat_c[i][j] += _mm_cvtss_f32(output);
+                        }
+                }
+        }
 }
 
 #else

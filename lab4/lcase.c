@@ -159,6 +159,13 @@ lcase_sse_simple(char *restrict dst, const char *restrict src, size_t len)
          *  - _mm_set1_epi8
          *  - _mm_or_si128 (the por instruction)
          */
+        const __m128i lowCase = _mm_set1_epi8(0x20);
+
+        for (int offset = 0 ; offset <= len ; offset += 16)
+        {
+                __m128i upperCase = _mm_loadu_si128((__m128i *)(src + offset));
+                _mm_storeu_si128((__m128i *)(dst + offset),_mm_or_si128(upperCase, lowCase)); 
+        }
 }
 
 static void
@@ -176,6 +183,16 @@ lcase_sse_cond(char *restrict dst, const char *restrict src, size_t len)
          *  - _mm_cmpgt_epi8 (the pcmpgtb instruction)
          *  - _mm_and_si128 (the pand instruction)
          */
+
+        const __m128i lowCase = _mm_set1_epi8(0x20);
+        const __m128i lowerLimA = _mm_set1_epi8(0x40);
+        const __m128i upperLimZ = _mm_set1_epi8(0x5B);
+
+        for (int offset = 0 ; offset <= len ; offset += 16)
+        {
+                __m128i upperCase = _mm_loadu_si128((__m128i *)(src + offset));
+                _mm_storeu_si128((__m128i *)(dst + offset), _mm_or_si128(upperCase, _mm_and_si128(_mm_and_si128(_mm_cmpgt_epi8(upperCase, lowerLimA), _mm_cmpgt_epi8(upperLimZ, upperCase)), lowCase)));
+        }
 }
 
 static char *
